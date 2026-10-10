@@ -1,0 +1,21 @@
+
+[
+  {
+    "title": "Artificial Intelligence Is Transforming Digital Technology",
+    "summary": "AI tools are creating new possibilities for developers, creators and businesses.",
+    "category": "Technology",
+    "url": "https://techcrunch.com/"
+  },
+  {
+    "title": "Explore the Latest AI Models and Research",
+    "summary": "Discover AI models, experiments and tools from the developer community.",
+    "category": "Science",
+    "url": "https://huggingface.co/"
+  },
+  {
+    "title": "Discover New Digital Products and Startups",
+    "summary": "Explore new apps, technology products and innovative ideas.",
+    "category": "Business",
+    "url": "https://www.producthunt.com/"
+  }
+]
