@@ -1,167 +1,144 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXORA | AI & Tech Hub</title>
+<title>Nexora News | Latest Updates</title>
+<meta name="description" content="Read the latest technology, AI, world and digital news on Nexora News.">
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#080b14;color:#f4f7ff;font-family:Arial,sans-serif}
-header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #263149}
-.logo{font-size:25px;font-weight:bold;letter-spacing:2px}
-.logo span{color:#65d7ff}
-nav a{color:#ddd;text-decoration:none;margin-left:14px}
-.hero{text-align:center;padding:70px 18px 45px}
-.hero h1{font-size:clamp(40px,8vw,65px);margin:20px 0}
-.gradient{background:linear-gradient(90deg,#65d7ff,#a58bff);color:transparent;background-clip:text}
-.hero p{color:#aab5ca;line-height:1.8;max-width:600px;margin:auto}
-.btn{display:inline-block;margin-top:15px;padding:12px 18px;border-radius:9px;background:linear-gradient(90deg,#65d7ff,#a58bff);color:#080b14;text-decoration:none;font-weight:bold}
-section{padding:30px 6% 45px}
-h2{font-size:30px}
-.sub{color:#aab5ca}
-.search{width:100%;padding:14px;background:#111a2c;border:1px solid #293651;border-radius:10px;color:white;font-size:16px;margin:15px 0 22px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:17px}
-.card{background:#111a2c;border:1px solid #293651;padding:20px;border-radius:15px}
-.card:hover{border-color:#65d7ff}
-.card h3{margin:10px 0}
-.card p{color:#aab5ca;line-height:1.6;min-height:48px}
-.icon{font-size:30px}
-.tag{color:#65d7ff;font-size:11px;letter-spacing:1px}
-.news{background:#111a2c;border:1px solid #293651;border-radius:13px;padding:20px;margin-bottom:15px}
-.news p{color:#aab5ca;line-height:1.6}
-footer{text-align:center;padding:25px;color:#8d9ab3;border-top:1px solid #263149}
-@media(max-width:450px){header{padding:15px 4%}.logo{font-size:20px}nav a{font-size:12px;margin-left:7px}section{padding-left:5%;padding-right:5%}}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f6fb;color:#182033}
+header{background:#10182b;color:white;padding:22px 16px}
+.wrap{max-width:1000px;margin:auto}
+.logo{font-size:30px;font-weight:800;color:#69a7ff}
+header p{color:#cbd5e1;margin-bottom:0}
+nav{background:#202d47;padding:12px 16px;color:white}
+nav a{color:white;text-decoration:none;margin-right:18px;font-size:14px}
+main{max-width:1000px;margin:24px auto;padding:0 14px}
+.hero{background:linear-gradient(120deg,#172554,#2563eb);color:white;padding:25px;border-radius:16px;margin-bottom:24px}
+.hero h1{margin-top:0}
+.section-title{border-left:5px solid #2563eb;padding-left:10px}
+#news{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:white;border-radius:13px;overflow:hidden;box-shadow:0 3px 15px #17255412}
+.card img{width:100%;height:180px;object-fit:cover;background:#dbeafe}
+.content{padding:16px}
+.tag{font-size:12px;color:#2563eb;font-weight:bold;text-transform:uppercase}
+.card h3{line-height:1.4;margin:9px 0}
+.card p{color:#536078;line-height:1.6;font-size:14px}
+.card a{display:inline-block;background:#1d4ed8;color:white;padding:10px 14px;border-radius:7px;text-decoration:none;font-size:13px}
+.caption{border-top:1px solid #e5e7eb;padding-top:12px;margin-top:12px!important}
+.status{padding:20px;background:white;border-radius:10px}
+footer{text-align:center;background:#10182b;color:#cbd5e1;padding:25px;margin-top:35px}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="logo">NEX<span>ORA</span></div>
-  <nav>
-    <a href="#tools">AI Tools</a>
-    <a href="#news">News</a>
-  </nav>
+  <div class="wrap">
+    <div class="logo">NEXORA NEWS</div>
+    <p>Stay informed. Stay ahead.</p>
+  </div>
 </header>
 
-<div class="hero">
-  <div class="tag">YOUR DIGITAL LAUNCHPAD</div>
-  <h1>Explore <span class="gradient">Beyond.</span></h1>
-  <p>Discover powerful AI tools, explore coding resources and stay connected with the world of technology — all in one place.</p>
-  <a class="btn" href="#tools">Explore AI Tools ↗</a>
-</div>
-
-<section id="tools">
-  <h2>AI Tools <span class="gradient">Hub</span></h2>
-  <p class="sub">Useful digital tools, all in one place.</p>
-  <input id="search" class="search" placeholder="Search AI and coding tools..." oninput="filterTools()">
-
-  <div class="grid" id="toolGrid">
-
-    <div class="card" data-name="chatgpt ai writing">
-      <div class="icon">✳️</div><div class="tag">AI ASSISTANT</div>
-      <h3>ChatGPT</h3><p>Write, learn, brainstorm and solve problems with AI.</p>
-      <a class="btn" href="https://chatgpt.com/" target="_blank" rel="noopener">Open Tool ↗</a>
-    </div>
-
-    <div class="card" data-name="gemini google ai">
-      <div class="icon">♊</div><div class="tag">AI ASSISTANT</div>
-      <h3>Google Gemini</h3><p>Explore ideas, research topics and get AI assistance.</p>
-      <a class="btn" href="https://gemini.google.com/" target="_blank" rel="noopener">Open Tool ↗</a>
-    </div>
-
-    <div class="card" data-name="claude ai assistant">
-      <div class="icon">✺</div><div class="tag">AI ASSISTANT</div>
-      <h3>Claude</h3><p>Get help with writing, analysis and complex questions.</p>
-      <a class="btn" href="https://claude.ai/" target="_blank" rel="noopener">Open Tool ↗</a>
-    </div>
-
-    <div class="card" data-name="github coding developer">
-      <div class="icon">⌘</div><div class="tag">DEVELOPER</div>
-      <h3>GitHub</h3><p>Host projects and explore open-source code.</p>
-      <a class="btn" href="https://github.com/" target="_blank" rel="noopener">Open Tool ↗</a>
-    </div>
-
-    <div class="card" data-name="replit python coding">
-      <div class="icon">💻</div><div class="tag">CODING</div>
-      <h3>Replit</h3><p>Experiment with programming in an online workspace.</p>
-      <a class="btn" href="https://replit.com/" target="_blank" rel="noopener">Open Tool ↗</a>
-    </div>
-
-    <div class="card" data-name="canva design graphics">
-      <div class="icon">🎨</div><div class="tag">DESIGN</div>
-      <h3>Canva</h3><p>Create social posts, graphics and presentations.</p>
-      <a class="btn" href="https://www.canva.com/" target="_blank" rel="noopener">Open Tool ↗</a>
-    </div>
-
-    <div class="card" data-name="hugging face ai models">
-      <div class="icon">🤗</div><div class="tag">AI DEVELOPER</div>
-      <h3>Hugging Face</h3><p>Explore AI models, datasets and machine-learning demos.</p>
-      <a class="btn" href="https://huggingface.co/" target="_blank" rel="noopener">Open Tool ↗</a>
-    </div>
-
-    <div class="card" data-name="notion notes productivity">
-      <div class="icon">📝</div><div class="tag">PRODUCTIVITY</div>
-      <h3>Notion</h3><p>Organize notes, tasks and your projects.</p>
-      <a class="btn" href="https://www.notion.so/" target="_blank" rel="noopener">Open Tool ↗</a>
-    </div>
-
+<nav>
+  <div class="wrap">
+    <a href="#home">Home</a>
+    <a href="#news-section">Latest News</a>
+    <a href="#about">About</a>
   </div>
-  <p id="empty" hidden>No matching tools found.</p>
-</section>
+</nav>
 
-<section id="news">
-  <h2>Latest in <span class="gradient">Tech</span></h2>
-  <p class="sub">Explore technology, AI and developer updates.</p>
+<main id="home">
+  <section class="hero">
+    <h1>Discover What's Happening</h1>
+    <p>Technology, artificial intelligence, science and world updates — all in one place.</p>
+  </section>
 
-  <div class="news">
-    <div class="tag">AI RESEARCH</div>
-    <h3>Latest Artificial Intelligence Research</h3>
-    <p>Explore recently published AI research papers.</p>
-    <a class="btn" href="https://arxiv.org/list/cs.AI/recent" target="_blank" rel="noopener">Read Research ↗</a>
+  <h2 class="section-title" id="news-section">Latest News & Updates</h2>
+  <p>Read the story and its social media caption.</p>
+
+  <div id="news">
+    <div class="status">Loading latest news...</div>
   </div>
 
-  <div class="news">
-    <div class="tag">TECHNOLOGY</div>
-    <h3>Technology News</h3>
-    <p>Discover technology stories and industry updates.</p>
-    <a class="btn" href="https://www.theverge.com/tech" target="_blank" rel="noopener">Read News ↗</a>
-  </div>
-
-  <div class="news">
-    <div class="tag">DEVELOPERS</div>
-    <h3>Hacker News</h3>
-    <p>Read community discussions about technology and startups.</p>
-    <a class="btn" href="https://news.ycombinator.com/" target="_blank" rel="noopener">Explore ↗</a>
-  </div>
-
-  <div class="news">
-    <div class="tag">AI UPDATES</div>
-    <h3>OpenAI News</h3>
-    <p>Read announcements and updates from OpenAI.</p>
-    <a class="btn" href="https://openai.com/news/" target="_blank" rel="noopener">Read Updates ↗</a>
-  </div>
-
-  <p class="sub">Note: These are links to news sources, not an automatic live headline feed yet.</p>
-</section>
+  <section id="about">
+    <h2 class="section-title">About Nexora</h2>
+    <p>Nexora News brings readers interesting updates from the digital world, technology, science and beyond.</p>
+  </section>
+</main>
 
 <footer>
-  © <span id="year"></span> NEXORA | AI • Coding • Technology
+  <strong>NEXORA NEWS</strong>
+  <p>Knowledge. Technology. Updates.</p>
+  <small>News sources are linked with their articles. Images belong to their respective sources.</small>
 </footer>
 
 <script>
-function filterTools(){
-  const q=document.getElementById('search').value.toLowerCase().trim();
-  const cards=document.querySelectorAll('#toolGrid .card');
-  let count=0;
-  cards.forEach(card=>{
-    const match=(card.innerText+' '+card.dataset.name).toLowerCase().includes(q);
-    card.hidden=!match;
-    if(match)count++;
-  });
-  document.getElementById('empty').hidden=count!==0;
+const articles = [
+{
+title:"Artificial Intelligence: The Latest Developments",
+category:"Technology",
+description:"Explore new developments in AI, digital technology and the tools changing how people work and learn.",
+image:"https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
+url:"https://news.google.com/search?q=artificial+intelligence",
+caption:"🤖 The future of technology is evolving every day! Discover the latest AI developments with Nexora News. 🚀 #AI #Technology #Nexora"
+},
+{
+title:"The Latest Updates from the World of Science",
+category:"Science",
+description:"Discover scientific discoveries, research highlights and innovations from around the world.",
+image:"https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800",
+url:"https://news.google.com/search?q=science",
+caption:"🔬 New discoveries. New possibilities. Stay curious and keep exploring with Nexora! 🌍 #Science #Innovation #Nexora"
+},
+{
+title:"What's New in the World of Technology?",
+category:"Tech News",
+description:"Read about smartphones, software, digital trends and the technology shaping our daily lives.",
+image:"https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800",
+url:"https://news.google.com/search?q=technology",
+caption:"💻 Technology never stands still! Follow Nexora for updates on the digital world. ⚡ #TechNews #DigitalWorld #Nexora"
+},
+{
+title:"World News: Important Stories and Updates",
+category:"World",
+description:"Catch up on current international headlines and explore the stories making news around the globe.",
+image:"https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800",
+url:"https://news.google.com/",
+caption:"🌍 Stay informed about what's happening around the world. Read, learn and stay updated with Nexora News. 📰 #WorldNews #LatestNews #Nexora"
+},
+{
+title:"Cybersecurity and Online Safety",
+category:"Cybersecurity",
+description:"Learn about online privacy, account security and the latest cybersecurity news and advice.",
+image:"https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=800",
+url:"https://news.google.com/search?q=cybersecurity",
+caption:"🔐 Protect your digital life! Stay informed about cybersecurity, online privacy and safer internet habits. 🛡️ #CyberSecurity #OnlineSafety #Nexora"
+},
+{
+title:"The Future of Coding and Software Development",
+category:"Programming",
+description:"Explore programming trends, developer tools, software updates and the future of building on the web.",
+image:"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800",
+url:"https://news.google.com/search?q=software+development",
+caption:"👨‍💻 Every great project starts with an idea and some code. Follow the latest developer news with Nexora! 🚀 #Coding #Programming #Developers"
 }
-document.getElementById('year').textContent=new Date().getFullYear();
-</script>
+];
 
+const container = document.getElementById("news");
+
+container.innerHTML = articles.map(article => `
+  <article class="card">
+    <img src="${article.image}" alt="${article.category} news image" loading="lazy">
+    <div class="content">
+      <span class="tag">${article.category}</span>
+      <h3>${article.title}</h3>
+      <p>${article.description}</p>
+      <a href="${article.url}" target="_blank" rel="noopener noreferrer">Read News ↗</a>
+      <p class="caption"><strong>Post Caption:</strong><br>${article.caption}</p>
+    </div>
+  </article>
+`).join("");
+</script>
 </body>
 </html>
