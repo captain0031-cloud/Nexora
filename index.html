@@ -4,141 +4,526 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nexora News | Latest Updates</title>
-<meta name="description" content="Read the latest technology, AI, world and digital news on Nexora News.">
+<meta name="theme-color" content="#080b16">
+<title>NEXORA — Digital Tools Studio</title>
+<meta name="description" content="Nexora digital studio for graphic design, coding tools, AI prompts and creator resources.">
 <style>
+:root {
+  --bg:#080b16;--panel:#11172a;--line:#242d48;
+  --text:#f4f6ff;--muted:#9ba7c5;
+  --purple:#9270ff;--cyan:#59e5f4;--green:#65f0b0;
+}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f6fb;color:#182033}
-header{background:#10182b;color:white;padding:22px 16px}
-.wrap{max-width:1000px;margin:auto}
-.logo{font-size:30px;font-weight:800;color:#69a7ff}
-header p{color:#cbd5e1;margin-bottom:0}
-nav{background:#202d47;padding:12px 16px;color:white}
-nav a{color:white;text-decoration:none;margin-right:18px;font-size:14px}
-main{max-width:1000px;margin:24px auto;padding:0 14px}
-.hero{background:linear-gradient(120deg,#172554,#2563eb);color:white;padding:25px;border-radius:16px;margin-bottom:24px}
-.hero h1{margin-top:0}
-.section-title{border-left:5px solid #2563eb;padding-left:10px}
-#news{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-.card{background:white;border-radius:13px;overflow:hidden;box-shadow:0 3px 15px #17255412}
-.card img{width:100%;height:180px;object-fit:cover;background:#dbeafe}
-.content{padding:16px}
-.tag{font-size:12px;color:#2563eb;font-weight:bold;text-transform:uppercase}
-.card h3{line-height:1.4;margin:9px 0}
-.card p{color:#536078;line-height:1.6;font-size:14px}
-.card a{display:inline-block;background:#1d4ed8;color:white;padding:10px 14px;border-radius:7px;text-decoration:none;font-size:13px}
-.caption{border-top:1px solid #e5e7eb;padding-top:12px;margin-top:12px!important}
-.status{padding:20px;background:white;border-radius:10px}
-footer{text-align:center;background:#10182b;color:#cbd5e1;padding:25px;margin-top:35px}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:Inter,system-ui,-apple-system,sans-serif;
+ line-height:1.6;
+}
+button,input,textarea,select{font:inherit}
+button,a{ -webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer}
+.nav{
+ position:sticky;top:0;z-index:20;
+ display:flex;align-items:center;justify-content:space-between;
+ gap:14px;padding:15px 5%;background:#080b16ed;
+ backdrop-filter:blur(18px);border-bottom:1px solid var(--line)
+}
+.logo{font-size:23px;font-weight:950;letter-spacing:2px}
+.logo span{color:var(--cyan)}
+.navlinks{display:flex;gap:20px;align-items:center;font-size:13px;color:var(--muted)}
+.navlinks a:hover{color:var(--cyan)}
+.wrap{width:min(1120px,90%);margin:auto}
+.hero{padding:78px 0 55px;position:relative;overflow:hidden}
+.hero:before{
+ content:"";position:absolute;width:360px;height:360px;
+ right:-100px;top:-140px;border-radius:50%;
+ background:#7957ff30;filter:blur(70px);pointer-events:none
+}
+.pill{
+ display:inline-block;border:1px solid #39315f;
+ background:#17152c;padding:6px 12px;border-radius:30px;
+ color:#c7b8ff;font-size:12px
+}
+h1{font-size:clamp(42px,8vw,78px);line-height:1.04;
+ letter-spacing:-3px;margin:23px 0}
+.gradient{
+ background:linear-gradient(100deg,#a48aff,#5ee7f2);
+ -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.hero p{color:var(--muted);max-width:600px;font-size:16px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin:25px 0}
+.btn{
+ display:inline-flex;justify-content:center;align-items:center;
+ gap:8px;padding:12px 18px;border-radius:12px;
+ border:1px solid var(--line);background:var(--panel);
+ color:white;font-weight:750;font-size:13px
+}
+.btn.primary{background:linear-gradient(110deg,#9270ff,#6650db);border:0}
+.btn:hover,.tool:hover{transform:translateY(-3px)}
+.btn,.tool{transition:.2s}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:35px}
+.stat{padding:15px;border:1px solid var(--line);border-radius:15px;background:#101426}
+.stat b{display:block;font-size:17px}
+.stat span{font-size:12px;color:var(--muted)}
+.section{padding:45px 0}
+.heading{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:23px}
+.heading h2{font-size:clamp(25px,4vw,34px);margin:0;letter-spacing:-1px}
+.heading p{color:var(--muted);font-size:13px;margin:5px 0 0}
+.search{
+ width:100%;background:var(--panel);border:1px solid var(--line);
+ border-radius:12px;padding:14px;color:white;outline:none;margin-bottom:15px
+}
+.search:focus,input:focus,textarea:focus,select:focus{border-color:var(--purple)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filter{border:1px solid var(--line);background:transparent;color:var(--muted);
+ padding:8px 13px;border-radius:30px;font-size:12px}
+.filter.active{background:#292044;color:white;border-color:var(--purple)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.tool{
+ background:linear-gradient(145deg,#141b30,#0e1221);
+ border:1px solid var(--line);border-radius:18px;padding:20px;
+ min-width:0
+}
+.tool:hover{border-color:#6650bb}
+.tool .ico{font-size:28px;margin-bottom:10px}
+.tool h3{font-size:16px;margin:0 0 7px}
+.tool p{font-size:13px;color:var(--muted);margin:0 0 16px}
+.tool .btn{width:100%;padding:10px;font-size:12px}
+.tag{font-size:10px;color:var(--cyan);text-transform:uppercase;letter-spacing:1px}
+.panel{
+ background:var(--panel);border:1px solid var(--line);
+ border-radius:20px;padding:22px;margin-top:15px
+}
+.panel h3{margin-top:0}
+label{display:block;color:#cbd4ee;font-size:12px;margin:13px 0 6px}
+input,textarea,select{
+ width:100%;padding:12px;border:1px solid var(--line);
+ background:#090e1c;color:white;border-radius:10px;outline:none
+}
+textarea{min-height:100px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.result{
+ margin-top:15px;padding:15px;border:1px dashed #454c6a;
+ border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere;
+ color:#e2e8ff;min-height:48px;font-size:14px
+}
+#posterPreview{width:100%;max-width:400px;display:block;margin:18px auto;border-radius:12px}
+.newslist{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.newsitem{border:1px solid var(--line);background:var(--panel);
+ border-radius:15px;padding:18px}
+.newsitem p{color:var(--muted);font-size:13px}
+.newsitem a{color:var(--cyan);font-size:12px}
+.serviceprice{color:var(--green);font-size:13px;font-weight:800}
+.notice{font-size:12px;color:var(--muted);margin-top:12px}
+footer{border-top:1px solid var(--line);margin-top:45px;padding:30px 0;color:var(--muted);font-size:12px}
+footer .foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.hidden{display:none!important}
+@media(max-width:760px){
+ .nav{padding:12px 5%}.navlinks{gap:12px;font-size:11px}
+ .navlinks a:nth-child(2),.navlinks a:nth-child(3){display:none}
+ .grid,.newslist{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .hero{padding-top:55px}h1{letter-spacing:-2px}
+}
+@media(max-width:480px){
+ .grid,.newslist{grid-template-columns:1fr}
+ .stats{gap:7px}.stat{padding:10px}.stat b{font-size:14px}
+ .row{grid-template-columns:1fr}.heading{align-items:start;flex-direction:column}
+}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <div class="logo">NEXORA NEWS</div>
-    <p>Stay informed. Stay ahead.</p>
-  </div>
+
+<header class="nav">
+ <a href="#home" class="logo">NEX<span>ORA</span></a>
+ <nav class="navlinks">
+  <a href="#tools">Tools</a><a href="#studio">Design Studio</a>
+  <a href="#income">Income</a><a href="#news">Tech News</a>
+ </nav>
+ <a class="btn primary" href="#tools">Explore ↗</a>
 </header>
 
-<nav>
-  <div class="wrap">
-    <a href="#home">Home</a>
-    <a href="#news-section">Latest News</a>
-    <a href="#about">About</a>
+<main>
+<section class="hero wrap" id="home">
+ <span class="pill">✦ YOUR DIGITAL CREATION SPACE</span>
+ <h1>Create. Build.<br><span class="gradient">Earn with Skills.</span></h1>
+ <p>One destination for creators, designers and beginner developers.
+ Explore creative tools, generate content, build your portfolio and discover digital work opportunities.</p>
+ <div class="actions">
+  <a class="btn primary" href="#tools">Explore All Tools ↗</a>
+  <a class="btn" href="#studio">🎨 Open Design Studio</a>
+ </div>
+ <div class="stats">
+  <div class="stat"><b>🎨 Creative</b><span>Design your ideas</span></div>
+  <div class="stat"><b>💻 Developer</b><span>Build digital projects</span></div>
+  <div class="stat"><b>💰 Freelance</b><span>Find work opportunities</span></div>
+ </div>
+</section>
+
+<section class="section wrap" id="tools">
+ <div class="heading"><div><h2>Explore Tools</h2>
+ <p>Useful utilities for your next digital project.</p></div></div>
+ <input class="search" id="search" placeholder="🔎 Search tools..." aria-label="Search tools">
+ <div class="filters">
+  <button class="filter active" data-cat="all">All Tools</button>
+  <button class="filter" data-cat="design">Design</button>
+  <button class="filter" data-cat="ai">AI & Content</button>
+  <button class="filter" data-cat="code">Coding</button>
+  <button class="filter" data-cat="creator">Creator</button>
+ </div>
+ <div class="grid" id="toolGrid">
+  <article class="tool" data-cat="design" data-name="poster graphic design">
+   <div class="ico">🖼️</div><span class="tag">Design</span>
+   <h3>Poster Studio</h3><p>Create a custom poster and download it as an image.</p>
+   <a class="btn" href="#studio">Open Studio ↗</a>
+  </article>
+  <article class="tool" data-cat="design" data-name="birthday greeting card">
+   <div class="ico">🎂</div><span class="tag">Design</span>
+   <h3>Birthday Card Maker</h3><p>Make a personalized birthday graphic for someone special.</p>
+   <a class="btn" href="#studio">Create Card ↗</a>
+  </article>
+  <article class="tool" data-cat="ai" data-name="ai caption generator">
+   <div class="ico">✨</div><span class="tag">Content</span>
+   <h3>Caption Generator</h3><p>Generate caption ideas and hashtags for your posts.</p>
+   <a class="btn" href="#caption">Generate Caption ↗</a>
+  </article>
+  <article class="tool" data-cat="ai" data-name="ai prompt writer">
+   <div class="ico">🧠</div><span class="tag">AI Prompts</span>
+   <h3>Prompt Builder</h3><p>Build detailed prompts for AI writing and image tools.</p>
+   <a class="btn" href="#prompt">Build Prompt ↗</a>
+  </article>
+  <article class="tool" data-cat="code" data-name="html css javascript formatter">
+   <div class="ico">⌨️</div><span class="tag">Developer</span>
+   <h3>Code Pad</h3><p>Write and save a simple HTML project locally in your browser.</p>
+   <a class="btn" href="#codepad">Open Code Pad ↗</a>
+  </article>
+  <article class="tool" data-cat="creator" data-name="freelance income portfolio">
+   <div class="ico">💼</div><span class="tag">Freelance</span>
+   <h3>Freelance Starter</h3><p>Explore services you can offer and build your portfolio.</p>
+   <a class="btn" href="#income">Explore Work ↗</a>
+  </article>
+ </div>
+ <p id="noResults" class="notice hidden">No matching tools found. Try another search.</p>
+</section>
+
+<section class="section wrap" id="studio">
+ <div class="heading"><div><h2>🎨 Graphic Design Studio</h2>
+ <p>Design a simple custom graphic directly in your browser.</p></div></div>
+ <div class="panel">
+  <div class="row">
+   <div><label for="designTitle">Main title</label>
+    <input id="designTitle" value="DREAM BIG" maxlength="55"></div>
+   <div><label for="designSub">Subtitle</label>
+    <input id="designSub" value="CREATE YOUR FUTURE" maxlength="80"></div>
   </div>
-</nav>
-
-<main id="home">
-  <section class="hero">
-    <h1>Discover What's Happening</h1>
-    <p>Technology, artificial intelligence, science and world updates — all in one place.</p>
-  </section>
-
-  <h2 class="section-title" id="news-section">Latest News & Updates</h2>
-  <p>Read the story and its social media caption.</p>
-
-  <div id="news">
-    <div class="status">Loading latest news...</div>
+  <div class="row">
+   <div><label for="designBg">Background</label>
+    <select id="designBg">
+     <option value="purple">Midnight Purple</option>
+     <option value="blue">Ocean Blue</option>
+     <option value="green">Neon Green</option>
+     <option value="black">Classic Black</option>
+     <option value="pink">Pink Dream</option>
+    </select>
+   </div>
+   <div><label for="designType">Design style</label>
+    <select id="designType"><option value="poster">Modern Poster</option>
+    <option value="birthday">Birthday Greeting</option></select>
+   </div>
   </div>
+  <button class="btn primary" id="makePoster" style="margin-top:16px;width:100%">Generate Graphic ✨</button>
+  <canvas id="posterPreview" width="900" height="1100" class="hidden"></canvas>
+  <button class="btn hidden" id="downloadPoster" style="width:100%">⬇ Download PNG</button>
+  <p class="notice">Your graphic is generated in this browser. Preview it before downloading.</p>
+ </div>
+</section>
 
-  <section id="about">
-    <h2 class="section-title">About Nexora</h2>
-    <p>Nexora News brings readers interesting updates from the digital world, technology, science and beyond.</p>
-  </section>
+<section class="section wrap" id="caption">
+ <div class="heading"><div><h2>✨ Caption Generator</h2>
+ <p>Generate ready-to-edit social media captions.</p></div></div>
+ <div class="panel">
+  <label for="captionTopic">What is your post about?</label>
+  <input id="captionTopic" placeholder="e.g. My new website Nexora">
+  <label for="captionStyle">Caption style</label>
+  <select id="captionStyle">
+   <option value="professional">Professional</option>
+   <option value="motivational">Motivational</option>
+   <option value="creative">Creative</option>
+   <option value="short">Short and simple</option>
+  </select>
+  <button class="btn primary" id="makeCaption" style="margin-top:14px">Generate Caption</button>
+  <div id="captionResult" class="result">Your caption will appear here.</div>
+  <button class="btn" id="copyCaption" style="margin-top:10px">Copy Caption</button>
+ </div>
+</section>
+
+<section class="section wrap" id="prompt">
+ <div class="heading"><div><h2>🧠 AI Prompt Builder</h2>
+ <p>Create a detailed prompt to use with your preferred AI service.</p></div></div>
+ <div class="panel">
+  <label for="promptTask">What do you want AI to create?</label>
+  <input id="promptTask" placeholder="e.g. A professional Instagram poster">
+  <div class="row">
+   <div><label for="promptStyle">Style</label>
+    <select id="promptStyle"><option>Professional</option><option>Minimalist</option>
+    <option>Futuristic</option><option>Luxury</option><option>Colorful</option></select>
+   </div>
+   <div><label for="promptPlatform">Platform</label>
+    <select id="promptPlatform"><option>Instagram</option><option>Website</option>
+    <option>YouTube</option><option>General purpose</option></select>
+   </div>
+  </div>
+  <button class="btn primary" id="makePrompt" style="margin-top:14px">Build Prompt</button>
+  <div id="promptResult" class="result">Your prompt will appear here.</div>
+  <button class="btn" id="copyPrompt" style="margin-top:10px">Copy Prompt</button>
+  <p class="notice">This creates a text prompt. It does not call an external AI model.</p>
+ </div>
+</section>
+
+<section class="section wrap" id="codepad">
+ <div class="heading"><div><h2>💻 HTML Code Pad</h2>
+ <p>Write basic HTML and preview your page.</p></div></div>
+ <div class="panel">
+  <label for="codeInput">Your HTML code</label>
+  <textarea id="codeInput" spellcheck="false" style="min-height:210px;font-family:monospace"><h1>Hello from Nexora!</h1>
+<p>My first web project.</p>
+<button onclick="this.textContent='It works!'">Click me</button></textarea>
+  <div class="actions">
+   <button class="btn primary" id="previewCode">Preview HTML</button>
+   <button class="btn" id="downloadCode">Download HTML</button>
+  </div>
+  <iframe id="codeFrame" title="HTML preview" sandbox="allow-scripts"
+   style="width:100%;height:260px;background:white;border:1px solid var(--line);border-radius:12px"></iframe>
+  <p class="notice">Preview runs in a sandbox. Never paste passwords, secret keys or untrusted code.</p>
+ </div>
+</section>
+
+<section class="section wrap" id="income">
+ <div class="heading"><div><h2>💰 Digital Income Hub</h2>
+ <p>Turn your skills into services clients can purchase.</p></div></div>
+ <div class="grid">
+  <article class="tool"><div class="ico">🎨</div><h3>Graphic Design</h3>
+   <p>Offer social posts, thumbnails, flyers and birthday graphics.</p>
+   <div class="serviceprice">Set your own price</div></article>
+  <article class="tool"><div class="ico">🌐</div><h3>Website Development</h3>
+   <p>Build landing pages, personal portfolios and small business websites.</p>
+   <div class="serviceprice">Set your own price</div></article>
+  <article class="tool"><div class="ico">✍️</div><h3>Writing & Captions</h3>
+   <p>Offer social captions, product descriptions and content writing.</p>
+   <div class="serviceprice">Set your own price</div></article>
+  <article class="tool"><div class="ico">📱</div><h3>Social Media Kits</h3>
+   <p>Create profile graphics, post templates and branding packs.</p>
+   <div class="serviceprice">Set your own price</div></article>
+  <article class="tool"><div class="ico">🛠️</div><h3>Website Customization</h3>
+   <p>Help clients update text, colors, layouts and simple web pages.</p>
+   <div class="serviceprice">Set your own price</div></article>
+  <article class="tool"><div class="ico">🚀</div><h3>Build Your Portfolio</h3>
+   <p>Show sample projects, explain your skills and prepare to contact clients.</p>
+   <div class="serviceprice">Start with sample work</div></article>
+ </div>
+ <div class="panel">
+  <h3>Prepare a client introduction</h3>
+  <label for="serviceName">Your name or creator brand</label>
+  <input id="serviceName" placeholder="e.g. Nexora Digital Studio">
+  <label for="serviceOffer">What service do you offer?</label>
+  <input id="serviceOffer" placeholder="e.g. Website design and social media graphics">
+  <label for="serviceContact">Your public contact link (optional)</label>
+  <input id="serviceContact" placeholder="e.g. your portfolio or professional profile URL">
+  <button class="btn primary" id="makePitch" style="margin-top:14px">Create Service Introduction</button>
+  <div class="result" id="pitchResult">Your introduction will appear here.</div>
+  <button class="btn" id="copyPitch" style="margin-top:10px">Copy Introduction</button>
+  <p class="notice">To receive paid work, publish samples and add your real contact or freelance profile. This website does not process payments or guarantee earnings.</p>
+ </div>
+</section>
+
+<section class="section wrap" id="news">
+ <div class="heading"><div><h2>📰 Tech & AI News</h2>
+ <p>Visit trusted sources for current technology updates.</p></div></div>
+ <div class="newslist">
+  <article class="newsitem"><div class="ico">🤖</div><h3>Artificial Intelligence</h3>
+   <p>Research, AI releases and industry developments.</p>
+   <a href="https://techcrunch.com/category/artificial-intelligence/" target="_blank" rel="noopener">Explore AI News ↗</a></article>
+  <article class="newsitem"><div class="ico">💻</div><h3>Developer News</h3>
+   <p>Programming, open-source projects and software.</p>
+   <a href="https://github.blog/" target="_blank" rel="noopener">Explore GitHub Blog ↗</a></article>
+  <article class="newsitem"><div class="ico">🌐</div><h3>Technology Updates</h3>
+   <p>Technology reporting and digital industry news.</p>
+   <a href="https://www.theverge.com/tech" target="_blank" rel="noopener">Explore Tech News ↗</a></article>
+ </div>
+ <p class="notice">These are links to news sources, not an automatically updating news feed.</p>
+</section>
 </main>
 
-<footer>
-  <strong>NEXORA NEWS</strong>
-  <p>Knowledge. Technology. Updates.</p>
-  <small>News sources are linked with their articles. Images belong to their respective sources.</small>
-</footer>
+<footer><div class="wrap foot">
+ <div><a href="#home" class="logo">NEX<span>ORA</span></a>
+ <p>Build something amazing. One project at a time.</p></div>
+ <div>© <span id="year"></span> Nexora Digital Studio</div>
+</div></footer>
 
 <script>
-const articles = [
-{
-title:"Artificial Intelligence: The Latest Developments",
-category:"Technology",
-description:"Explore new developments in AI, digital technology and the tools changing how people work and learn.",
-image:"https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
-url:"https://news.google.com/search?q=artificial+intelligence",
-caption:"🤖 The future of technology is evolving every day! Discover the latest AI developments with Nexora News. 🚀 #AI #Technology #Nexora"
-},
-{
-title:"The Latest Updates from the World of Science",
-category:"Science",
-description:"Discover scientific discoveries, research highlights and innovations from around the world.",
-image:"https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800",
-url:"https://news.google.com/search?q=science",
-caption:"🔬 New discoveries. New possibilities. Stay curious and keep exploring with Nexora! 🌍 #Science #Innovation #Nexora"
-},
-{
-title:"What's New in the World of Technology?",
-category:"Tech News",
-description:"Read about smartphones, software, digital trends and the technology shaping our daily lives.",
-image:"https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800",
-url:"https://news.google.com/search?q=technology",
-caption:"💻 Technology never stands still! Follow Nexora for updates on the digital world. ⚡ #TechNews #DigitalWorld #Nexora"
-},
-{
-title:"World News: Important Stories and Updates",
-category:"World",
-description:"Catch up on current international headlines and explore the stories making news around the globe.",
-image:"https://images.unsplash.com/photo-1495020689067-958852a7765e?w=800",
-url:"https://news.google.com/",
-caption:"🌍 Stay informed about what's happening around the world. Read, learn and stay updated with Nexora News. 📰 #WorldNews #LatestNews #Nexora"
-},
-{
-title:"Cybersecurity and Online Safety",
-category:"Cybersecurity",
-description:"Learn about online privacy, account security and the latest cybersecurity news and advice.",
-image:"https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=800",
-url:"https://news.google.com/search?q=cybersecurity",
-caption:"🔐 Protect your digital life! Stay informed about cybersecurity, online privacy and safer internet habits. 🛡️ #CyberSecurity #OnlineSafety #Nexora"
-},
-{
-title:"The Future of Coding and Software Development",
-category:"Programming",
-description:"Explore programming trends, developer tools, software updates and the future of building on the web.",
-image:"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800",
-url:"https://news.google.com/search?q=software+development",
-caption:"👨‍💻 Every great project starts with an idea and some code. Follow the latest developer news with Nexora! 🚀 #Coding #Programming #Developers"
+const $=id=>document.getElementById(id);
+
+$("year").textContent=new Date().getFullYear();
+
+// Tool search and category filters
+let activeCategory="all";
+function filterTools(){
+ const query=$("search").value.toLowerCase().trim();
+ let visible=0;
+ document.querySelectorAll("#toolGrid .tool").forEach(card=>{
+  const matchCategory=activeCategory==="all"||card.dataset.cat===activeCategory;
+  const matchText=(card.innerText+" "+card.dataset.name).toLowerCase().includes(query);
+  const show=matchCategory&&matchText;
+  card.classList.toggle("hidden",!show);
+  if(show)visible++;
+ });
+ $("noResults").classList.toggle("hidden",visible!==0);
 }
-];
+document.querySelectorAll(".filter").forEach(button=>{
+ button.addEventListener("click",()=>{
+  activeCategory=button.dataset.cat;
+  document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b===button));
+  filterTools();
+ });
+});
+$("search").addEventListener("input",filterTools);
 
-const container = document.getElementById("news");
+// Copy buttons
+async function copyText(text){
+ if(!text||!text.trim()){alert("Pehle content generate karo!");return}
+ try{
+  await navigator.clipboard.writeText(text);
+  alert("Copied successfully!");
+ }catch(e){
+  const area=document.createElement("textarea");
+  area.value=text;document.body.appendChild(area);area.select();
+  const ok=document.execCommand("copy");area.remove();
+  alert(ok?"Copied successfully!":"Copy failed. Please select and copy manually.");
+ }
+}
+$("copyCaption").onclick=()=>$("captionResult").innerText.includes("appear here")?
+ alert("Pehle caption generate karo!"):copyText($("captionResult").innerText);
+$("copyPrompt").onclick=()=>copyText($("promptResult").innerText);
+$("copyPitch").onclick=()=>copyText($("pitchResult").innerText);
 
-container.innerHTML = articles.map(article => `
-  <article class="card">
-    <img src="${article.image}" alt="${article.category} news image" loading="lazy">
-    <div class="content">
-      <span class="tag">${article.category}</span>
-      <h3>${article.title}</h3>
-      <p>${article.description}</p>
-      <a href="${article.url}" target="_blank" rel="noopener noreferrer">Read News ↗</a>
-      <p class="caption"><strong>Post Caption:</strong><br>${article.caption}</p>
-    </div>
-  </article>
-`).join("");
+// Caption generator: local templates, no paid API
+$("makeCaption").onclick=()=>{
+ const topic=$("captionTopic").value.trim();
+ if(!topic){alert("Post ka topic likho!");return}
+ const style=$("captionStyle").value;
+ const captions={
+  professional:`Introducing ${topic}.\n\nTurning ideas into digital experiences through creativity, design and technology.\n\nLet's create something meaningful.\n\n#DigitalCreator #Innovation #Design #Technology`,
+  motivational:`Every big idea starts with one small step. 🚀\n\n${topic} is another reminder to keep learning, creating and improving.\n\nDream big. Stay consistent. Build your future.\n\n#Motivation #CreatorJourney #KeepBuilding`,
+  creative:`✨ A new idea, a fresh vision!\n\n${topic}\n\nCreating, experimenting and bringing imagination to life. 💡\n\nWhat do you think? 👇\n\n#CreativeStudio #DigitalArt #ContentCreator`,
+  short:`${topic} 🚀\n\nCreating something new, one step at a time.\n\n#Nexora #DigitalCreator #Creative`
+ };
+ $("captionResult").innerText=captions[style];
+};
+
+// Prompt builder
+$("makePrompt").onclick=()=>{
+ const task=$("promptTask").value.trim();
+ if(!task){alert("Apna task likho!");return}
+ $("promptResult").innerText=
+ `Act as a professional ${$("promptPlatform").value} creative expert.\n\n`+
+ `TASK: ${task}\nSTYLE: ${$("promptStyle").value}\nPLATFORM: ${$("promptPlatform").value}\n\n`+
+ `Create an original, polished result with a clear visual hierarchy, thoughtful details, `+
+ `balanced composition and excellent readability. Adapt the output to the platform. `+
+ `Avoid clutter, spelling errors, generic filler and unnecessary elements. `+
+ `Provide a final result ready for review and practical use.`;
+};
+
+// Client introduction generator
+$("makePitch").onclick=()=>{
+ const name=$("serviceName").value.trim();
+ const offer=$("serviceOffer").value.trim();
+ const contact=$("serviceContact").value.trim();
+ if(!name||!offer){alert("Brand name aur service dono likho!");return}
+ $("pitchResult").innerText=
+ `Hello! I'm ${name}.\n\n`+
+ `I offer ${offer} to help individuals and businesses build their digital presence.\n\n`+
+ `I focus on creative ideas, clear communication and work tailored to each project.\n\n`+
+ `Interested in working together? Let's discuss your project!`+
+ (contact?`\n\nPortfolio / Contact: ${contact}`:"");
+};
+
+// HTML preview and download
+$("previewCode").onclick=()=>{
+ $("codeFrame").srcdoc=$("codeInput").value;
+};
+$("downloadCode").onclick=()=>{
+ const blob=new Blob([$("codeInput").value],{type:"text/html;charset=utf-8"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+ a.href=url;a.download="nexora-project.html";a.click();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+$("previewCode").click();
+
+// Graphic generator
+const palettes={
+ purple:["#100b2d","#6c42e8","#e5dfff"],
+ blue:["#071e3d","#087cae","#c4f5ff"],
+ green:["#06251f","#087e62","#c9ffe8"],
+ black:["#111111","#353535","#ffffff"],
+ pink:["#420b32","#c43e87","#ffe1f2"]
+};
+function drawPoster(){
+ const canvas=$("posterPreview");
+ const ctx=canvas.getContext("2d");
+ const colors=palettes[$("designBg").value];
+ const birthday=$("designType").value==="birthday";
+ const title=$("designTitle").value.trim()||(birthday?"HAPPY BIRTHDAY":"DREAM BIG");
+ const subtitle=$("designSub").value.trim();
+ const g=ctx.createLinearGradient(0,0,900,1100);
+ g.addColorStop(0,colors[0]);g.addColorStop(1,colors[1]);
+ ctx.fillStyle=g;ctx.fillRect(0,0,900,1100);
+ // Decorative circles
+ for(let i=0;i<7;i++){
+  ctx.beginPath();ctx.arc(750-i*55,160+i*100,70+i*8,0,Math.PI*2);
+  ctx.strokeStyle=colors[2]+"44";ctx.lineWidth=3;ctx.stroke();
+ }
+ ctx.strokeStyle=colors[2]+"88";ctx.lineWidth=3;
+ ctx.strokeRect(55,55,790,990);
+ ctx.fillStyle=colors[2];ctx.font="bold 25px Arial";
+ ctx.fillText("N E X O R A",80,115);
+ ctx.fillStyle=colors[2]+"cc";ctx.font="20px Arial";
+ ctx.fillText(birthday?"A SPECIAL CELEBRATION":"IDEAS INTO REALITY",80,205);
+ ctx.fillStyle="#ffffff";
+ let words=title.split(/\s+/),lines=[],line="";
+ ctx.font="bold 78px Arial";
+ words.forEach(word=>{
+  let test=line?line+" "+word:word;
+  if(ctx.measureText(test).width>710&&line){lines.push(line);line=word}
+  else line=test;
+ });
+ if(line)lines.push(line);
+ let y=450-(lines.length-1)*48;
+ lines.slice(0,5).forEach(t=>{ctx.fillText(t,80,y);y+=100});
+ ctx.fillStyle=colors[2];ctx.font="bold 25px Arial";
+ const subLines=[];
+ let subLine="";
+ subtitle.split(/\s+/).forEach(word=>{
+  let test=subLine?subLine+" "+word:word;
+  if(ctx.measureText(test).width>700&&subLine){subLines.push(subLine);subLine=word}
+  else subLine=test;
+ });
+ if(subLine)subLines.push(subLine);
+ subLines.slice(0,3).forEach((t,i)=>ctx.fillText(t,82,800+i*38));
+ ctx.fillStyle="#ffffffcc";ctx.font="20px Arial";
+ ctx.fillText("CREATE YOUR OWN STORY",80,965);
+ ctx.fillStyle=colors[2];ctx.fillRect(80,990,140,5);
+ canvas.classList.remove("hidden");
+ $("downloadPoster").classList.remove("hidden");
+}
+$("makePoster").onclick=drawPoster;
+$("downloadPoster").onclick=()=>{
+ const a=document.createElement("a");
+ a.download="nexora-graphic.png";
+ a.href=$("posterPreview").toDataURL("image/png");
+ a.click();
+};
 </script>
 </body>
 </html>
