@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d19">
+<meta name="description" content="Nexora — News, AI and Technology, all in one place.">
+<title>Nexora | News, AI & Technology</title>
+<style>
+:root{--bg:#080d19;--panel:#111a2b;--line:#273650;--text:#f5f7ff;--muted:#9baac2;--blue:#91aaff;--green:#65e4c1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:#080d19ed;z-index:5}
+nav{max-width:1150px;margin:auto;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-size:27px;font-weight:900;letter-spacing:-1px}.logo span{color:var(--blue)}
+nav small{color:var(--muted)}
+main{max-width:1150px;margin:auto;padding:26px 20px 60px}
+.hero{padding:46px 28px;border:1px solid #33446b;border-radius:24px;background:radial-gradient(ellipse at 85% 10%,#536dc755,transparent 45%),linear-gradient(135deg,#172440,#0c1322)}
+.tag{font-size:11px;color:var(--green);font-weight:bold;text-transform:uppercase;letter-spacing:1.6px}
+h1{font-size:clamp(38px,7vw,66px);line-height:1.08;letter-spacing:-2px;margin:14px 0}
+.hero p{color:var(--muted);max-width:600px}
+.search{display:flex;gap:10px;margin-top:22px;max-width:650px}
+input{flex:1;min-width:0;padding:14px;border:1px solid #35435d;border-radius:12px;background:#0a1220;color:white;font-size:15px}
+button{cursor:pointer;font:inherit}
+.btn{border:0;border-radius:12px;padding:13px 18px;background:var(--blue);color:#071020;font-weight:bold}
+section{margin-top:36px}
+.heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
+h2{margin:0;font-size:24px;letter-spacing:-.5px}
+.muted{color:var(--muted);font-size:13px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.pill{padding:8px 13px;border:1px solid var(--line);border-radius:30px;background:var(--panel);color:var(--text)}
+.pill.active{background:var(--blue);color:#071020}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{padding:19px;border:1px solid var(--line);border-radius:17px;background:var(--panel);min-width:0;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:#637fc7}
+.card h3{font-size:18px;line-height:1.4;margin:10px 0}
+.card p{color:var(--muted);font-size:14px}
+.card a{color:#b7c8ff;font-size:14px}
+.feature{background:linear-gradient(140deg,#132a31,#111a2b)}
+.status{padding:15px 0;color:var(--muted)}
+footer{text-align:center;padding:28px 15px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+@media(max-width:750px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:32px 20px}}
+@media(max-width:480px){main{padding:20px 14px 45px}.grid{grid-template-columns:1fr}.search{flex-direction:column}h1{letter-spacing:-1px}}
+</style>
+</head>
+<body>
+<header><nav>
+<a class="logo" href="#">NEX<span>ORA</span></a>
+<small>News · AI · Technology</small>
+</nav></header>
+<main>
+<div class="hero">
+<div class="tag">Your daily digital briefing</div>
+<h1>The future<br>starts here.</h1>
+<p>Discover important headlines, artificial intelligence breakthroughs, digital tools and technology shaping tomorrow.</p>
+<form class="search" id="searchForm">
+<input id="searchInput" placeholder="Search news, AI and technology..." aria-label="Search headlines">
+<button class="btn" type="submit">Search ↗</button>
+</form>
+</div>
+
+<section>
+<div class="heading"><h2>Latest Headlines</h2><span class="muted">News desk</span></div>
+<div class="pills" id="filters">
+<button class="pill active" data-cat="All">All news</button>
+<button class="pill" data-cat="World">World</button>
+<button class="pill" data-cat="Technology">Technology</button>
+<button class="pill" data-cat="Business">Business</button>
+<button class="pill" data-cat="Science">Science</button>
+<button class="pill" data-cat="Health">Health</button>
+<button class="pill" data-cat="Sports">Sports</button>
+</div>
+<div class="status" id="newsStatus">Loading news...</div>
+<div class="grid" id="newsGrid"></div>
+</section>
+
+<section>
+<div class="heading"><h2>AI & Innovation</h2><span class="muted">Explore the ecosystem</span></div>
+<div class="grid">
+<article class="card feature"><div class="tag">Artificial intelligence</div><h3>Discover AI tools</h3><p>Explore AI assistants, image generators, writing tools and productivity platforms.</p><a href="https://www.producthunt.com/" target="_blank" rel="noopener">Discover new tools ↗</a></article>
+<article class="card"><div class="tag">Developer zone</div><h3>Code & Build</h3><p>Explore programming resources, software projects and developer tools.</p><a href="https://github.com/trending" target="_blank" rel="noopener">GitHub Trending ↗</a></article>
+<article class="card"><div class="tag">Tech radar</div><h3>Emerging Technology</h3><p>Discover robotics, cybersecurity, cloud computing and AI developments.</p><a href="https://techcrunch.com/" target="_blank" rel="noopener">TechCrunch ↗</a></article>
+</div>
+</section>
+
+<section>
+<div class="heading"><h2>Useful Digital Resources</h2></div>
+<div class="grid">
+<a class="card" href="https://huggingface.co/" target="_blank" rel="noopener"><div class="tag">AI community</div><h3>Hugging Face</h3><p>Explore AI models, datasets and demos.</p><span>Visit resource ↗</span></a>
+<a class="card" href="https://www.canva.com/" target="_blank" rel="noopener"><div class="tag">Creative tools</div><h3>Canva</h3><p>Create graphics, presentations and social posts.</p><span>Visit resource ↗</span></a>
+<a class="card" href="https://developers.google.com/" target="_blank" rel="noopener"><div class="tag">Learn & develop</div><h3>Google Developers</h3><p>Explore technical documentation and developer learning resources.</p><span>Visit resource ↗</span></a>
+</div>
+</section>
+</main>
+<footer>
+<div class="logo">NEX<span>ORA</span></div>
+<p>Your daily window into news, AI and technology.</p>
+<p>News belongs to its original publishers. Nexora is an independent project.</p>
+<p>© <span id="year"></span> Nexora</p>
+</footer>
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+const grid=document.getElementById("newsGrid");
+const status=document.getElementById("newsStatus");
+const search=document.getElementById("searchInput");
+let articles=[],category="All";
+function render(){
+grid.replaceChildren();
+const q=search.value.trim().toLowerCase();
+const filtered=articles.filter(a=>(category==="All"||a.category===category)&&((a.title||"").toLowerCase().includes(q)||(a.summary||"").toLowerCase().includes(q)));
+if(!filtered.length){status.textContent=articles.length?"No matching headlines. Try another search.":"News data has not been added yet. We will connect the news updater next.";return;}
+status.textContent=filtered.length+" headlines · Read full stories at their original sources.";
+filtered.forEach(a=>{
+const card=document.createElement("article");card.className="card";
+const tag=document.createElement("div");tag.className="tag";tag.textContent=a.category||"News";
+const title=document.createElement("h3");title.textContent=a.title||"News headline";
+const summary=document.createElement("p");summary.textContent=a.summary||"Open the original report for details.";
+const link=document.createElement("a");link.textContent="Read full story ↗";link.href=a.url||"#";link.target="_blank";link.rel="noopener";
+card.append(tag,title,summary,link);grid.appendChild(card);
+});
+}
+document.getElementById("filters").addEventListener("click",e=>{
+const b=e.target.closest("button[data-cat]");if(!b)return;
+category=b.dataset.cat;
+document.querySelectorAll(".pill").forEach(x=>x.classList.toggle("active",x===b));
+render();
+});
+document.getElementById("searchForm").addEventListener("submit",e=>{e.preventDefault();render();});
+search.addEventListener("input",render);
+fetch("./data/news.json").then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{articles=Array.isArray(data)?data:[];render();}).catch(()=>{status.textContent="News feed will appear here after we configure the updater.";});
+</script>
+</body>
+</html>
